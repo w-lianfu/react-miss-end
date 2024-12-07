@@ -8,7 +8,7 @@ const PORT = 5000;
 
 const options = {
   key: fs.readFileSync(path.join(__dirname, 'public', 'lovekeqi.com.key')),
-  cert: fs.readFileSync(path.join(__dirname, 'public', 'lovekeqi.com_public.crt')),
+  cert: fs.readFileSync(path.join(__dirname, 'public', 'lovekeqi.com.pem')),
 };
 
 const server = https.createServer(options, app);
@@ -20,6 +20,6 @@ app.get('/', (req, res) => {
 app.use(express.static(path.join(__dirname, 'images')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Express with TypeScript server running: http://localhost:${PORT}`);
 });
